@@ -1130,7 +1130,6 @@ progress {
   }
   .col-md-5 {
     flex: 0 0 auto;
-    width: 41.66666667%;
   }
   .col-md-6 {
     flex: 0 0 auto;
@@ -4184,7 +4183,6 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
   height: var(--bs-card-height);
   word-wrap: break-word;
   background-color: var(--bs-card-bg);
@@ -11329,10 +11327,6 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-
-.card-img-top {
-  width: 130px;
-}
 
 .botao:hover {
   background-color: #000;
