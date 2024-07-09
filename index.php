@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -35,7 +39,11 @@
                         <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="#login">Login</a></li>
+                        <?php if(isset($_SESSION['usuario'])): ?>
+                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/cadastro.html">Login</a></li>
+                    <?php endif; ?>
                     </ul>
                 </div>
             </div>
