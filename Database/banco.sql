@@ -58,7 +58,7 @@ VALUES
     ('óculos', 'solar', 'preto', 12, 320.00),
     ('óculos', 'solar', 'preto', 12, 320.00),
     ('óculos', 'solar', 'prata', 12, 320.00);
-
+    
 CREATE TABLE `carrinho` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `cliente_id` INT NOT NULL,
@@ -68,3 +68,24 @@ CREATE TABLE `carrinho` (
     FOREIGN KEY (`cliente_id`) REFERENCES `clientes`(`id`),
     FOREIGN KEY (`produto_id`) REFERENCES `produtos`(`id`)
 );
+
+CREATE TABLE `administradores` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(255) NOT NULL,
+    `senha` VARCHAR(255) NOT NULL,
+    `cpf` VARCHAR(11) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE (`cpf`)
+);
+
+INSERT INTO `administradores` (`username`, `senha`, `cpf`)
+VALUES ('admin', 'Estacio@123', '99999999999');
+
+ALTER TABLE `produtos`
+ADD COLUMN `administrador_id` INT,
+ADD CONSTRAINT `fk_administrador_id`
+    FOREIGN KEY (`administrador_id`)
+    REFERENCES `administradores`(`id`);
+    
+ALTER TABLE `administradores`
+ADD COLUMN `senha_hash` VARCHAR(255) NOT NULL AFTER `senha`;

@@ -4,7 +4,7 @@
 // require_once '../verificar-sessao.php';
 
 // Incluir o arquivo de conexão com o banco de dados
-require_once '../config/conexao.php';
+require_once '../config/Conexao.php';
 
 // Classe para manipulação de produtos
 class Produto {
