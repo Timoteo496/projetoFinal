@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +29,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a href="index.html">
+      <a href="/index.php">
         <h1 class="fonte" style="color: #e5d335;">4Charmes</h1>
       </a>
       Menu
@@ -37,7 +41,12 @@
           <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-          <li class="nav-item"><a class="btn btn-primary text-uppercase" href="#login">Login</a></li>
+          <?php if (isset($_SESSION['usuario'])): ?>
+            <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/cadastro.html">Login</a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -55,7 +64,6 @@
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
       </div>
 
-
       <div class="row text-center">
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Marrom.jfif" alt="">
@@ -63,21 +71,21 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Marrom2.jfif" alt="">
           <h4 class="my-3">Carteira Marrom</h4>
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
-          </h4><a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          </h4><a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Marrom3.jfif" alt="">
           <h4 class="my-3">Carteira Branca</h4>
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
-          </h4><a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          </h4><a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Preta.jfif" alt="">
@@ -85,7 +93,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Preta2.jfif" alt="">
@@ -93,7 +101,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/Carteira/Carteira Preta3.jfif" alt="">
@@ -101,11 +109,36 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#services">Comprar</a>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll('.comprar-btn').forEach(button => {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        console.log('Botão "Comprar" clicado.');
+
+        fetch('/public/verificar-sessao.php')
+          .then(response => response.json())
+          .then(data => {
+            console.log('Resposta recebida:', data);
+
+            if (data.status === 'success') {
+              alert(data.message);
+              // Redireciona para a página do carrinho ou atualiza a página atual
+            } else if (data.status === 'redirect') {
+              alert(data.message); // Exibe a mensagem de redirecionamento
+              window.location.href = '/public/cadastro.html'; // Redireciona para a página de cadastro
+            }
+          })
+          .catch(error => console.error('Erro:', error));
+      });
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->

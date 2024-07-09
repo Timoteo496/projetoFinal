@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +29,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a href="index.html">
+      <a href="/index.php">
         <h1 class="fonte" style="color: #e5d335;">4Charmes</h1>
       </a>
       <i class="fas fa-bars ms-1"></i>
@@ -36,7 +40,12 @@
           <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Equipe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-          <li class="nav-item"><a class="btn btn-primary text-uppercase" href="#">Login</a></li>
+          <?php if (isset($_SESSION['usuario'])): ?>
+            <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/cadastro.html">Login</a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -54,7 +63,6 @@
         <h3 class="section-subheading text-muted">Os Melhores, você encontra aqui</h3>
       </div>
 
-
       <div class="row text-center">
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos.jfif" alt="">
@@ -62,21 +70,21 @@
           <h4>
             <p class="text-muted"><strong>R$ 32,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos2.jfif" alt="">
           <h4 class="my-3">Óculos Dourado</h4>
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
-          </h4><a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          </h4><a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos3.jfif" alt="">
           <h4 class="my-3">Óculos de Sol</h4>
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
-          </h4><a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          </h4><a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos4.jfif" alt="">
@@ -84,7 +92,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos5.jfif" alt="">
@@ -92,7 +100,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos6.jfif" alt="">
@@ -100,7 +108,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos7.jfif" alt="">
@@ -108,7 +116,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos8.jfif" alt="">
@@ -116,7 +124,7 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
         <div class="col-md-4 pb-5">
           <img src="/imagens/oculos/Oculos9.jfif" alt="">
@@ -124,11 +132,31 @@
           <h4>
             <p class="text-muted"><strong>R$ 320,00</strong></p>
           </h4>
-          <a class="btn btn-primary btn-x0.5 text-uppercase " href="#services">Comprar</a>
+          <a class="btn btn-primary btn-x0.5 text-uppercase comprar-btn" href="#">Comprar</a>
         </div>
       </div>
     </div>
   </section>
+  <script>
+    document.querySelectorAll('.comprar-btn').forEach(button => {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        fetch('/public/verificar-sessao.php')
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              alert(data.message);
+              // Redireciona para a página do carrinho ou atualiza a página atual
+            } else if (data.status === 'redirect') {
+              alert(data.message); // Exibe a mensagem de redirecionamento
+              window.location.href = '/public/cadastro.html'; // Redireciona para a página de cadastro
+            }
+          })
+          .catch(error => console.error('Erro:', error));
+      });
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->

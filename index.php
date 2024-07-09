@@ -31,7 +31,7 @@ session_start();
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
 
-            <h1 class="fonte" style="color: #e5d335;" href="index.html">4Charmes</h1>
+            <h1 class="fonte" style="color: #e5d335;" href="/index.php">4Charmes</h1>
             <i class="fas fa-bars ms-1"></i>
             </button>
             <img src="" alt="">
@@ -71,21 +71,21 @@ session_start();
             <div class="row text-center">
                 <div class="col-md-4">
                     <img class="mb-4" src="/imagens/Relogio/relogioPrata2.jfif" width="150">
-                    <a href="/relogios.html">
+                    <a href="/relogios.php">
                         <h2 class="my-3">Relógios</h2>
                     </a>
 
                 </div>
                 <div class="col-md-4">
                     <img class="mb-4" src="/imagens/Carteira/Carteira Marrom.jfif" width="250px">
-                    <a href="/carteiras.html">
+                    <a href="/carteiras.php">
                         <h2 class="my-4">Carteiras</h2>
                     </a>
 
                 </div>
                 <div class="col-md-4">
                     <img class="mb-4" src="/imagens/oculos/Oculos3.jfif" width="250px">
-                    <a href="/oculos.html">
+                    <a href="/oculos.php">
                         <h2 class="my-3">Óculos</h2>
                     </a>
 
