@@ -12,7 +12,7 @@ session_start();
   <meta name="author" content="" />
   <title>Acessorios - 4Charmes</title>
   <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -35,7 +35,7 @@ session_start();
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Manager</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
@@ -146,7 +146,7 @@ session_start();
           .then(data => {
             if (data.status === 'success') {
               alert(data.message);
-              // Redireciona para a página do carrinho ou atualiza a página atual
+              window.location.href = '/public/carrinho.php'; // Redireciona para o carrinho
             } else if (data.status === 'redirect') {
               alert(data.message); // Exibe a mensagem de redirecionamento
               window.location.href = '/public/cadastro.html'; // Redireciona para a página de cadastro

@@ -30,14 +30,15 @@ session_start();
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-
-            <h1 class="fonte" style="color: #e5d335;" href="/index.php">4Charmes</h1>
+            <a href="/index.php">
+                <h1 class="fonte" style="color: #e5d335;">4Charmes</h1>
+            </a>
             <i class="fas fa-bars ms-1"></i>
             </button>
             <img src="" alt="">
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Manager</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>

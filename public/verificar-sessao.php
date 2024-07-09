@@ -7,7 +7,7 @@ $response = [];
 
 if (isset($_SESSION['usuario'])) {
     $response['status'] = 'success';
-    $response['message'] = 'Você está logado!';
+    $response['message'] = 'Você será redirecionado para o Carrinho de Compras!';
 } else {
     $response['status'] = 'redirect';
     $response['message'] = 'Por favor, faça login para comprar!';

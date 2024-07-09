@@ -58,3 +58,13 @@ VALUES
     ('óculos', 'solar', 'preto', 12, 320.00),
     ('óculos', 'solar', 'preto', 12, 320.00),
     ('óculos', 'solar', 'prata', 12, 320.00);
+
+CREATE TABLE `carrinho` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `cliente_id` INT NOT NULL,
+    `produto_id` INT NOT NULL,
+    `quantidade` INT NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`cliente_id`) REFERENCES `clientes`(`id`),
+    FOREIGN KEY (`produto_id`) REFERENCES `produtos`(`id`)
+);
