@@ -1,5 +1,6 @@
 <?php
-class Cliente {
+class Cliente
+{
     private $conn;
     private $table_name = "clientes";
 
@@ -9,11 +10,13 @@ class Cliente {
     public $email;
     public $senha;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function cadastrar() {
+    public function cadastrar()
+    {
         $query = "INSERT INTO " . $this->table_name . " (nome, cpf, telefone, email, senha) VALUES (:nome, :cpf, :telefone, :email, :senha)";
 
         $stmt = $this->conn->prepare($query);
@@ -37,13 +40,14 @@ class Cliente {
         return false;
     }
 
-    public function validarLogin($email, $senha) {
+    public function validarLogin($email, $senha)
+    {
         $query = "SELECT email, senha FROM " . $this->table_name . " WHERE email = :email";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        
+
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,25 @@
         body {
             background-color: #f8f9fa;
         }
+
         .container {
-            max-width: 800px; /* Ajustado para comportar os dois formulários lado a lado */
+            max-width: 800px;
+            /* Ajustado para comportar os dois formulários lado a lado */
             margin-top: 50px;
         }
+
         .card {
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .form-group label {
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -33,23 +39,28 @@
                     <form action="/class/cadastrar-user.php" method="POST">
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="telefone">Telefone</label>
-                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="XX XXXX-XXXX" required>
+                            <input type="text" class="form-control" id="telefone" name="telefone"
+                                placeholder="XX XXXX-XXXX" required>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Digite seu e-mail" required>
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
+                            <input type="password" class="form-control" id="senha" name="senha"
+                                placeholder="Digite sua senha" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                     </form>
@@ -62,11 +73,13 @@
                     <form action="/class/validar-user.php" method="POST">
                         <div class="form-group">
                             <label for="loginEmail">E-mail</label>
-                            <input type="email" class="form-control" id="loginEmail" name="loginEmail" placeholder="Digite seu e-mail" required>
+                            <input type="email" class="form-control" id="loginEmail" name="loginEmail"
+                                placeholder="Digite seu e-mail" required>
                         </div>
                         <div class="form-group">
                             <label for="loginSenha">Senha</label>
-                            <input type="password" class="form-control" id="loginSenha" name="loginSenha" placeholder="Digite sua senha" required>
+                            <input type="password" class="form-control" id="loginSenha" name="loginSenha"
+                                placeholder="Digite sua senha" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
                     </form>
@@ -79,14 +92,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#telefone').on('input', function(){
+        $(document).ready(function () {
+            $('#telefone').on('input', function () {
                 var value = $(this).val();
                 var formattedValue = value.replace(/\D/g, '');
-                if(formattedValue.length > 2) {
+                if (formattedValue.length > 2) {
                     formattedValue = formattedValue.replace(/^(\d{2})(\d)/, '($1) $2');
                 }
-                if(formattedValue.length > 10) {
+                if (formattedValue.length > 10) {
                     formattedValue = formattedValue.replace(/(\d{4})(\d{4})$/, '$1-$2');
                 }
                 $(this).val(formattedValue);
@@ -94,4 +107,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,20 +1,22 @@
 <?php
 session_start();
 
-class Database {
+class Database
+{
     private $host = "localhost";
     private $db_name = "ecommerce";
     private $username = "root";
     private $password = "";
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->exec("set names utf8");
-        } catch(PDOException $exception) {
+        } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
         }
 
@@ -22,7 +24,8 @@ class Database {
     }
 }
 
-class Cliente {
+class Cliente
+{
     private $conn;
     private $table_name = "clientes";
 
@@ -32,11 +35,13 @@ class Cliente {
     public $email;
     public $senha;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function cadastrar() {
+    public function cadastrar()
+    {
         $query = "INSERT INTO " . $this->table_name . " (nome, cpf, telefone, email, senha) VALUES (:nome, :cpf, :telefone, :email, :senha)";
 
         $stmt = $this->conn->prepare($query);
@@ -89,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,10 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             max-width: 500px;
             margin-top: 50px;
         }
+
         .card {
             padding: 20px;
             border-radius: 15px;
@@ -109,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="card text-center">
@@ -125,4 +134,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
