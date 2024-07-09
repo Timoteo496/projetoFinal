@@ -1,5 +1,5 @@
-create database ecommerce;
-use ecommerce;
+CREATE DATABASE ecommerce;
+USE ecommerce;
 
 CREATE TABLE `clientes` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -37,3 +37,12 @@ VALUES
     ('relógio', 'esporte', 'preto', 12, 320.00),
     ('relógio', 'esporte', 'preto', 12, 320.00),
     ('relógio', 'esporte', 'preto', 12, 320.00);
+
+INSERT INTO produtos (nome, tipo, cor, quantidade, valor) 
+VALUES 
+    ('carteira', 'couro', 'marrom', 12, 320.00),
+    ('carteira', 'couro', 'marrom', 12, 320.00),
+    ('carteira', 'couro', 'marrom', 12, 320.00),
+    ('carteira', 'couro', 'preto', 12, 320.00),
+    ('carteira', 'couro', 'preto', 12, 320.00),
+    ('carteira', 'couro', 'preto', 12, 320.00);
