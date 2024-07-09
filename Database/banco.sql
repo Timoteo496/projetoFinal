@@ -46,3 +46,15 @@ VALUES
     ('carteira', 'couro', 'preto', 12, 320.00),
     ('carteira', 'couro', 'preto', 12, 320.00),
     ('carteira', 'couro', 'preto', 12, 320.00);
+    
+INSERT INTO produtos (nome, tipo, cor, quantidade, valor) 
+VALUES 
+    ('óculos', 'grau', 'preto', 12, 320.00),
+    ('óculos', 'grau', 'transparente', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'preto', 12, 320.00),
+    ('óculos', 'solar', 'prata', 12, 320.00);
