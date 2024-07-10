@@ -43,11 +43,11 @@ session_start();
                     <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
                     <?php if (isset($_SESSION['usuario'])): ?>
-                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
+                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="public/logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item"><a class="btn btn-primary text-uppercase"
-                                href="/public/cadastro.html">Login</a></li>
+                                href="public/cadastro.html">Login</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -58,7 +58,6 @@ session_start();
         <div class="container">
             <div class="masthead-subheading">Seja bem-vindo a melhor loja de Acessórios!</div> <br> <br><br>
             <div class="masthead-heading text-uppercase">Estilo e qualidade você encontra aqui! </div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Produtos</a>
         </div>
     </header>
     <!-- Services-->
@@ -71,21 +70,21 @@ session_start();
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <img class="mb-4" src="/imagens/Relogio/relogioPrata2.jfif" width="150">
+                    <img class="mb-4" src="imagens/Relogio/relogioPrata2.jfif" width="150">
                     <a href="/relogios.php">
                         <h2 class="my-3">Relógios</h2>
                     </a>
 
                 </div>
                 <div class="col-md-4">
-                    <img class="mb-4" src="/imagens/Carteira/Carteira Marrom.jfif" width="250px">
+                    <img class="mb-4" src="imagens/Carteira/Carteira Marrom.jfif" width="250px">
                     <a href="/carteiras.php">
                         <h2 class="my-4">Carteiras</h2>
                     </a>
 
                 </div>
                 <div class="col-md-4">
-                    <img class="mb-4" src="/imagens/oculos/Oculos3.jfif" width="250px">
+                    <img class="mb-4" src="imagens/oculos/Oculos3.jfif" width="250px">
                     <a href="/oculos.php">
                         <h2 class="my-3">Óculos</h2>
                     </a>
@@ -302,7 +301,7 @@ session_start();
                     <div class="text-center text-danger mb-3">Error sending message!</div>
                 </div>
                 <!-- Submit Button-->
-                <a class="btn btn-primary btn-xl text-uppercase text-center" href="#services">Produtos</a>
+                <button type="submit" class="btn btn-primary btn-block" onclick="alert('Obrigado pelo contato. Entraremos em contato !');">Entrar</button>
             </form>
         </div>
     </section>
