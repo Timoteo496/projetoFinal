@@ -209,7 +209,7 @@ session_start();
                     <div class="team-member">
                         <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
                         <h4>Diogo</h4>
-                        <p class="text-muted">O que pertuba</p>
+                        <p class="text-muted">P.O</p>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i
                                 class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i
