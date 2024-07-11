@@ -132,7 +132,8 @@ session_start();
             console.log('Resposta recebida:', data);
 
             if (data.status === 'success') {
-              alert(data.message); // Sessão ativa; redireciona para o carrinho
+              alert(data.message);
+              window.location.href = '/public/carrinho.php'; // Sessão ativa; redireciona para o carrinho
             } else if (data.status === 'redirect') {
               alert(data.message);
               window.location.href = '/public/cadastro.html'; // Sessão inativa; redireciona para a página de cadastro
