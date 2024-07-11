@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
         $quantidade = intval($_POST['quantidade']);
         $carrinho->atualizarItem($id, $quantidade);
     } elseif ($_POST['action'] == 'finalize') {
-        $cliente_id = $_SESSION['usuario_id']; // Supondo que o ID do cliente está na sessão
+        $cliente_id = $_SESSION['usuario_id'];
         $carrinho->finalizarCompra($cliente_id);
     } elseif ($_POST['action'] == 'remove') {
         $id = intval($_POST['id']);
