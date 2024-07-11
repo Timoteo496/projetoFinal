@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 $response = [];
 
-if (isset($_SESSION['usuario'])) {
+if (isset($_SESSION['usuario_id'])) {
     $response['status'] = 'success';
     $response['message'] = 'Você será redirecionado para o Carrinho de Compras!';
 } else {

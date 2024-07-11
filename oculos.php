@@ -42,7 +42,7 @@ session_start();
           <li class="nav-item"><a class="nav-link" href="#">Equipe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
           <!-- Verifica se existe uma sessão de usuário ativa -->
-          <?php if (isset($_SESSION['usuario'])): ?>
+          <?php if (isset($_SESSION['usuario_id'])): ?>
             <!-- Habilita a opção de Logout se a sessão estiver ativa -->
             <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
             </li>
