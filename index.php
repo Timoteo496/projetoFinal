@@ -38,13 +38,17 @@ session_start();
             <img src="" alt="">
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Manager</a></li>
+                    <!-- Opção de Login para administradores da página! -->
+                    <li class="nav-item"><a class="nav-link" href="/private/login-manager.html">Manager</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                    <!-- Verifica se existe uma sessão de usuário ativa -->
                     <?php if (isset($_SESSION['usuario'])): ?>
+                        <!-- Habilita a opção de Logout se a sessão estiver ativa -->
                         <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
                         </li>
+                        <!-- Senão, habilita a opção para Login -->
                     <?php else: ?>
                         <li class="nav-item"><a class="btn btn-primary text-uppercase"
                                 href="/public/cadastro.html">Login</a></li>

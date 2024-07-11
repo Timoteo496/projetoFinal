@@ -24,7 +24,6 @@ class Admin
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            // Verifica se a senha fornecida corresponde ao hash armazenado no banco de dados
             if (password_verify($password, $row['senha'])) {
                 return true;
             }

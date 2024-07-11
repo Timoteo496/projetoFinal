@@ -37,13 +37,17 @@ session_start();
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Manager</a></li>
+          <!-- Opção de Login para administradores da página! -->
+          <li class="nav-item"><a class="nav-link" href="/private/login-manager.html">Manager</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+          <!-- Verifica se existe uma sessão de usuário ativa -->
           <?php if (isset($_SESSION['usuario'])): ?>
+            <!-- Habilita a opção de Logout se a sessão estiver ativa -->
             <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
             </li>
+            <!-- Senão, habilita a opção para Login -->
           <?php else: ?>
             <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/cadastro.html">Login</a></li>
           <?php endif; ?>
@@ -128,11 +132,10 @@ session_start();
             console.log('Resposta recebida:', data);
 
             if (data.status === 'success') {
-              alert(data.message);
-              // Redireciona para a página do carrinho ou atualiza a página atual
+              alert(data.message); // Sessão ativa; redireciona para o carrinho
             } else if (data.status === 'redirect') {
-              alert(data.message); // Exibe a mensagem de redirecionamento
-              window.location.href = '/public/cadastro.html'; // Redireciona para a página de cadastro
+              alert(data.message);
+              window.location.href = '/public/cadastro.html'; // Sessão inativa; redireciona para a página de cadastro
             }
           })
           .catch(error => console.error('Erro:', error));

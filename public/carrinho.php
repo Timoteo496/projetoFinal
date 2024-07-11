@@ -34,7 +34,7 @@ session_start();
             </a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/index.php#portfolio">Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/private/login-manager.html">Manager</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#contact">Contato</a></li>
