@@ -71,13 +71,16 @@ CREATE TABLE `carrinho` (
 
 CREATE TABLE `administradores` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `username` VARCHAR(255) NOT NULL,
+    `username` VARCHAR(50) NOT NULL,
     `senha` VARCHAR(255) NOT NULL,
     `cpf` VARCHAR(11) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE (`cpf`)
 );
 
+-- PASSO 1: EXECUTAR O ARQUIVO /private/atualizar-senhas.php
+-- PASSO 2: EXECUTAR O ARQUIVO private/cadastrar-admin.php
+-- NÃO CRIAR O USUÁRIO COM ESSE SCRIPT! BASTA XECUTAR OS PASSOS ACIMA!
 INSERT INTO `administradores` (`username`, `senha`, `cpf`)
 VALUES ('admin', 'Estacio@123', '99999999999');
 
@@ -86,17 +89,7 @@ ADD COLUMN `administrador_id` INT,
 ADD CONSTRAINT `fk_administrador_id`
     FOREIGN KEY (`administrador_id`)
     REFERENCES `administradores`(`id`);
-    
+
+-- NÃO PRECISA USAR ESSA QUERY!
 ALTER TABLE `administradores`
 ADD COLUMN `senha_hash` VARCHAR(255) NOT NULL AFTER `senha`;
-
-DROP TABLE IF EXISTS `administradores`;
-
-CREATE TABLE `administradores` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `username` VARCHAR(50) NOT NULL,
-    `senha` VARCHAR(255) NOT NULL,
-    `cpf` VARCHAR(11) NOT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE (`cpf`)
-);

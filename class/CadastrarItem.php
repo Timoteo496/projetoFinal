@@ -138,6 +138,7 @@ $produtos = $produto->listar();
                 <div class="card">
                     <form id="cadastroForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
                         method="POST">
+                        <h3 class="text-center display-5 font-weight-bold text-primary mb-4">Cadastrar Novo Item</h3>
                         <div class="form-group">
                             <label for="nome">Nome do Produto</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
