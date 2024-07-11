@@ -1,5 +1,7 @@
 <?php
 
+// ESSA FUNÇÃO FOI USADA PARA CORRIGIR O ARMAZENAMENTO DA SENHA NO BANCO DE DADOS
+
 include_once '../class/Database.php';
 include_once '../class/Admin.php';
 

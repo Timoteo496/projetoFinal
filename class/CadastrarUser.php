@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cliente->senha = $_POST['senha'];
 
     if ($cliente->cadastrar()) {
-        $_SESSION['usuario'] = $cliente->email;
+        $_SESSION['usuario_id'] = $cliente->email;
         $message = "Sua conta foi criada com sucesso!";
         $message_type = "success";
     } else {

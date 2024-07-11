@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se as credenciais são válidas
     if ($cliente->validarLogin($email, $senha)) {
 
-        $_SESSION['usuario'] = $email;
+        $_SESSION['usuario_id'] = $email;
 
         header("Location: /index.php");
         exit;

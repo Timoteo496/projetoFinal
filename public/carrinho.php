@@ -1,5 +1,33 @@
 <?php
 session_start();
+
+include_once '../class/Database.php';
+include_once '../class/Carrinho.php';
+
+// Cria a conexão com o banco de dados
+$database = new Database();
+$conn = $database->getConnection();
+
+// Instancia a classe Carrinho
+$carrinho = new Carrinho($conn);
+
+// Lógica para atualizar a quantidade de itens no carrinho
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
+    if ($_POST['action'] == 'update') {
+        $id = intval($_POST['id']);
+        $quantidade = intval($_POST['quantidade']);
+        $carrinho->atualizarItem($id, $quantidade);
+    } elseif ($_POST['action'] == 'finalize') {
+        $cliente_id = $_SESSION['usuario_id']; // Supondo que o ID do cliente está na sessão
+        $carrinho->finalizarCompra($cliente_id);
+    } elseif ($_POST['action'] == 'remove') {
+        $id = intval($_POST['id']);
+        $carrinho->removerItem($id);
+    }
+}
+
+// Recupera os itens do carrinho
+$itens = $carrinho->listarItens($_SESSION['usuario_id']);
 ?>
 
 <!DOCTYPE html>
@@ -34,21 +62,21 @@ session_start();
             </a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/index.php#portfolio">Manager</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.php#contact">Contato</a></li>
-                    <?php if (isset($_SESSION['usuario'])): ?>
-                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item"><a class="btn btn-primary text-uppercase"
-                                href="/public/cadastro.html">Login</a></li>
-                    <?php endif; ?>
+                    <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+        </div>
+    </header>
 
     <!-- Carrinho de Compras -->
     <section class="page-section" id="carrinho">
@@ -70,17 +98,40 @@ session_start();
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Exemplo de um item no carrinho -->
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Relógio Prata</td>
-                                    <td>R$ 320,00</td>
-                                    <td>1</td>
-                                    <td><a href="#" class="btn btn-danger btn-sm">Remover</a></td>
-                                </tr>
-                                <!-- Outros itens do carrinho seriam adicionados aqui -->
+                                <?php foreach ($itens as $item): ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $item['id']; ?></th>
+                                        <td><?php echo $item['produto_nome']; ?></td>
+                                        <td><?php echo 'R$ ' . number_format($item['produto_valor'], 2, ',', '.'); ?></td>
+                                        <td>
+                                            <form action="atualizar-carrinho.php" method="post"
+                                                style="display: inline-block;">
+                                                <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                                <input type="number" name="quantidade"
+                                                    value="<?php echo $item['quantidade']; ?>" min="1">
+                                                <button type="submit" name="action" value="update"
+                                                    class="btn btn-success btn-sm">Atualizar</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="remover-item-carrinho.php" method="post"
+                                                style="display: inline-block;">
+                                                <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                                <button type="submit" name="action" value="remove"
+                                                    class="btn btn-danger btn-sm">Remover</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="text-center">
+                        <a href="/index.php#services" class="btn btn-primary">Continuar comprando</a>
+                        <form action="../private/finalizar-compra.php" method="post" style="display: inline-block;">
+                            <button type="submit" name="action" value="finalize" class="btn btn-success">Finalizar
+                                compra</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -89,7 +140,7 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

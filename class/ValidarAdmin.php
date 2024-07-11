@@ -3,8 +3,8 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    include_once 'Database.php';
-    include_once 'Admin.php';
+    include_once '../class/Database.php';
+    include_once '../class/Admin.php';
 
     $database = new Database();
     $db = $database->getConnection();

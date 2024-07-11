@@ -89,3 +89,14 @@ ADD CONSTRAINT `fk_administrador_id`
     
 ALTER TABLE `administradores`
 ADD COLUMN `senha_hash` VARCHAR(255) NOT NULL AFTER `senha`;
+
+DROP TABLE IF EXISTS `administradores`;
+
+CREATE TABLE `administradores` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    `senha` VARCHAR(255) NOT NULL,
+    `cpf` VARCHAR(11) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE (`cpf`)
+);

@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8" />
@@ -38,13 +38,22 @@ session_start();
             <img src="" alt="">
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Manager</a></li>
+                    <!-- Opção de Login para administradores da página! -->
+                    <li class="nav-item"><a class="nav-link" href="/private/login-manager.html">Manager</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+<<<<<<< HEAD
                     <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="nav-item"><a class="btn btn-primary text-uppercase" href="public/logout.php">Logout</a>
+=======
+                    <!-- Verifica se existe uma sessão de usuário ativa -->
+                    <?php if (isset($_SESSION['usuario_id'])): ?>
+                        <!-- Habilita a opção de Logout se a sessão estiver ativa -->
+                        <li class="nav-item"><a class="btn btn-primary text-uppercase" href="/public/logout.php">Logout</a>
+>>>>>>> 1f1b0ca79a169c0dd26bdc784034619a0412b7c4
                         </li>
+                        <!-- Senão, habilita a opção para Login -->
                     <?php else: ?>
                         <li class="nav-item"><a class="btn btn-primary text-uppercase"
                                 href="public/cadastro.html">Login</a></li>
